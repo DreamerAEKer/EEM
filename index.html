@@ -592,9 +592,12 @@
                 <p style="color: var(--text-muted); font-size: 0.9rem;">กรุณาระบุรหัสผ่านเพื่อเข้าถึงการตั้งค่า</p>
             </div>
             <form onsubmit="app.handleLogin(event)">
-                <div class="form-group">
+                <div class="form-group" style="position: relative;">
                     <input type="password" id="loginPasswordInput" class="form-input" placeholder="Password" required
-                        style="text-align: center;">
+                        style="text-align: center; padding-right: 40px;">
+                    <i id="togglePasswordBtn" class='bx bx-show'
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-muted); font-size: 1.2rem;"
+                        onclick="app.togglePasswordVisibility()"></i>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; justify-content: center;">ยืนยัน</button>
             </form>
@@ -828,12 +831,20 @@
                     statuses: ['ปกติ', 'ชำรุด', 'ส่งซ่อม', 'สูญหาย', 'เลิกใช้งาน'],
                     levels: ['Junior', 'Middle', 'Senior', 'Lead', 'Manager'],
                     shifts: ['เวร ก.', 'เวร ข.', 'เวรกลาง'],
-                    password: 'Khunnawut.YuGpo379773' // Default Password
+                    password: '37977310501' // Default Password
                 };
                 // Migration limit
                 if (!this.settings.levels) this.settings.levels = ['Junior', 'Middle', 'Senior', 'Lead', 'Manager'];
                 if (!this.settings.shifts) this.settings.shifts = ['เวร ก.', 'เวร ข.', 'เวรกลาง'];
-                if (!this.settings.password) this.settings.password = 'Khunnawut.YuGpo379773';
+                if (!this.settings.password) this.settings.password = '37977310501';
+
+                if (!this.settings.password) this.settings.password = '37977310501';
+
+                // MIGRATION (v1): Force reset password for everyone to new default
+                if (!this.settings.migrationVersion || this.settings.migrationVersion < 1) {
+                    this.settings.password = '37977310501';
+                    this.settings.migrationVersion = 1;
+                }
 
                 this.saveSettings(); // Ensure structure is updated
             }
@@ -1102,6 +1113,26 @@
             closePasswordModal() {
                 document.getElementById('passwordModal').classList.remove('open');
                 document.getElementById('loginPasswordInput').value = '';
+                // Reset to password type
+                const input = document.getElementById('loginPasswordInput');
+                const icon = document.getElementById('togglePasswordBtn');
+                input.type = 'password';
+                if (icon) {
+                    icon.className = 'bx bx-show';
+                }
+            }
+
+            togglePasswordVisibility() {
+                const input = document.getElementById('loginPasswordInput');
+                const icon = document.getElementById('togglePasswordBtn');
+
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'bx bx-hide';
+                } else {
+                    input.type = 'password';
+                    icon.className = 'bx bx-show';
+                }
             }
 
             handleLogin(e) {
