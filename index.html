@@ -446,43 +446,6 @@
             pointer-events: all;
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            /* Mobile Calendar overrides */
-            .calendar-grid {
-                gap: 4px !important;
-            }
-
-            .calendar-cell {
-                height: auto !important;
-                min-height: 60px;
-                padding: 4px !important;
-            }
-
-            .calendar-stat-text {
-                display: none !important;
-            }
-
-            .calendar-stat-dot {
-                display: inline-block !important;
-            }
-        }
-
         /* Calendar Styles */
         .calendar-grid {
             display: grid;
@@ -517,9 +480,12 @@
             margin-right: 2px;
         }
 
+        /* Responsive Design (Mobile & Tablet) */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
 
-
-        @media (max-width: 768px) {
             .sidebar.active {
                 transform: translateX(0);
             }
@@ -530,6 +496,16 @@
                 width: 100%;
             }
 
+            .menu-toggle {
+                display: block;
+                /* Show toggle */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 1rem;
+            }
+
+            /* Header Adjustments */
             header {
                 flex-direction: column-reverse;
                 align-items: flex-start;
@@ -544,17 +520,30 @@
                 width: 100%;
             }
 
-            .menu-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 1rem;
-            }
-
             .page-title h1 {
                 font-size: 1.5rem;
             }
 
+            /* Calendar Overrides (Compact View) */
+            .calendar-grid {
+                gap: 4px !important;
+            }
+
+            .calendar-cell {
+                height: auto !important;
+                min-height: 60px;
+                padding: 4px !important;
+            }
+
+            .calendar-stat-text {
+                display: none !important;
+            }
+
+            .calendar-stat-dot {
+                display: inline-block !important;
+            }
+
+            /* Other UI Adjustments */
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -581,7 +570,6 @@
                 overflow-y: auto;
             }
 
-            /* Form Grid Stacking */
             form div[style*="grid-template-columns"] {
                 grid-template-columns: 1fr !important;
             }
