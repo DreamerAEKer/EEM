@@ -531,8 +531,12 @@
 
             .calendar-cell {
                 height: auto !important;
-                min-height: 60px;
+                aspect-ratio: 1 / 1;
+                min-height: auto !important;
                 padding: 4px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
             }
 
             .calendar-stat-text {
