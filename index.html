@@ -8,30 +8,37 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --secondary: #ec4899;
-            --bg-dark: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
+            --primary: #ED1C24;
+            /* Thailand Post Red */
+            --primary-glow: rgba(237, 28, 36, 0.3);
+            --secondary: #1E293B;
+            /* Dark Slate */
+            --bg-dark: #F8FAFC;
+            /* Light Background */
+            --bg-card: #FFFFFF;
+            /* White Card */
+            --text-main: #334155;
+            /* Slate 700 */
+            --text-muted: #64748B;
+            /* Slate 500 */
+            --border: #E2E8F0;
+            /* Light Border */
             --glass: blur(12px);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color-scheme: dark;
+            color-scheme: light;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Prompt', sans-serif;
         }
 
         body {
@@ -40,8 +47,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image:
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(237, 28, 36, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(100, 116, 139, 0.05) 0%, transparent 40%);
         }
 
         /* Layout */
@@ -99,9 +106,9 @@
 
         .nav-item:hover,
         .nav-item.active {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(237, 28, 36, 0.08);
             color: var(--primary);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.05);
+            box-shadow: 0 0 20px rgba(237, 28, 36, 0.05);
         }
 
         .nav-item i {
@@ -210,11 +217,14 @@
         .btn-secondary {
             background: transparent;
             border: 1px solid var(--border);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: #F8FAFC;
             box-shadow: none;
+            color: var(--primary);
+            border-color: var(--primary);
         }
 
         /* Tables & Lists */
@@ -237,7 +247,7 @@
         }
 
         th {
-            background: rgba(15, 23, 42, 0.5);
+            background: #F1F5F9;
             padding: 1.25rem 1.5rem;
             font-weight: 500;
             color: var(--text-muted);
@@ -255,7 +265,7 @@
         }
 
         tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
+            background: #F8FAFC;
         }
 
         .status-badge {
@@ -272,8 +282,8 @@
         }
 
         .status-assigned {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
+            background: rgba(30, 41, 59, 0.1);
+            color: #334155;
         }
 
         /* Modal */
@@ -300,8 +310,10 @@
         }
 
         .modal {
-            background: #1e293b;
+            background: #ffffff;
             width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
             border-radius: 16px;
             border: 1px solid var(--border);
             padding: 2rem;
@@ -334,11 +346,11 @@
         .form-input,
         .form-select {
             width: 100%;
-            background: #0f172a;
+            background: #ffffff;
             border: 1px solid var(--border);
             padding: 0.75rem;
             border-radius: 8px;
-            color: white;
+            color: var(--text-main);
             font-size: 1rem;
             outline: none;
             transition: var(--transition);
@@ -347,7 +359,7 @@
         .form-input:focus,
         .form-select:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 0 3px var(--primary-glow);
         }
 
         /* Empty State */
@@ -417,9 +429,10 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--text-main);
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             padding: 0.5rem;
             border-radius: 8px;
+            border: 1px solid var(--border);
             transition: var(--transition);
         }
 
@@ -469,7 +482,7 @@
         }
 
         .empty-slot {
-            background: rgba(255, 255, 255, 0.02) !important;
+            background: #F8FAFC !important;
             border: 1px dashed var(--border) !important;
         }
 
@@ -627,8 +640,8 @@
                             <i class='bx bx-menu'></i>
                         </div>
                         <div class="page-title" id="pageHeader">
-                            <h1>Dashboard</h1>
-                            <p>ภาพรวมข้อมูลทั้งหมด</p>
+                            <h1>ภาพรวมแผนกลูกค้าธุรกิจ (10501)</h1>
+                            <p>ระบบบริหารจัดการพนักงานและอุปกรณ์</p>
                         </div>
                     </div>
                 </div>
@@ -673,6 +686,10 @@
             </div>
             <form onsubmit="app.handleEmployeeSubmit(event)">
                 <input type="hidden" name="id" id="empIdInput">
+                <div class="form-group">
+                    <label class="form-label">รหัสพนักงาน (Employee ID)</label>
+                    <input type="text" name="employeeId" class="form-input" placeholder="ระบุรหัสพนักงาน..." required>
+                </div>
                 <div class="form-group">
                     <label class="form-label">คำนำหน้าชื่อ</label>
                     <select name="prefix" class="form-select" required>
@@ -1401,6 +1418,16 @@
             init() {
                 this.render();
                 this.navigate('dashboard');
+
+                // Add ESC key listener to close modals
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        const openModals = document.querySelectorAll('.modal-overlay.open');
+                        openModals.forEach(modal => {
+                            modal.classList.remove('open');
+                        });
+                    }
+                });
             }
 
             toggleSidebar() {
@@ -1506,6 +1533,40 @@
                 e.target.reset();
             }
 
+            exportToCSV() {
+                // Header
+                let csvContent = "Employee ID,Name,Position,Shift,Office Phone,Equipment Count\n";
+
+                // Rows
+                this.store.employees.forEach(e => {
+                    const eqCount = this.store.equipment.filter(eq => eq.assignedTo === e.id).length;
+                    // Escape quotes
+                    const name = (e.prefix || '') + ' ' + e.name;
+                    const shift = (e.shift || '') + ' ' + (e.shiftDetail || '');
+
+                    const row = [
+                        e.employeeId || '-',
+                        `"${name.replace(/"/g, '""')}"`,
+                        e.level || '-',
+                        `"${shift.replace(/"/g, '""')}"`,
+                        e.officePhone || '-',
+                        eqCount
+                    ].join(",");
+                    csvContent += row + "\n";
+                });
+
+                // Use Blob with BOM for Thai support in Excel
+                const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.setAttribute("href", url);
+                link.setAttribute("download", `emp_report_${new Date().toISOString().slice(0, 10)}.csv`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
             backupData() {
                 const data = this.store.getFullDatabase();
                 const blob = new Blob([data], { type: 'application/json' });
@@ -1546,16 +1607,16 @@
                 const headerEl = document.getElementById('pageHeader');
 
                 if (this.currentView === 'dashboard') {
-                    headerEl.innerHTML = `<h1>Dashboard</h1><p>ภาพรวมข้อมูลทั้งหมด</p>`;
+                    headerEl.innerHTML = `<h1>ภาพรวมแผนกลูกค้าธุรกิจ (10501)</h1><p>ภาพรวมข้อมูลทั้งหมด</p>`;
                     viewEl.innerHTML = this.renderDashboard();
                 } else if (this.currentView === 'employees') {
-                    headerEl.innerHTML = `<h1>พนักงาน</h1><p>จัดการข้อมูลพนักงานในระบบ</p>`;
+                    headerEl.innerHTML = `<h1>จัดการพนักงาน</h1><p>ข้อมูลพนักงานและประวัติการทำงาน</p>`;
                     viewEl.innerHTML = this.renderEmployees();
                 } else if (this.currentView === 'equipment') {
-                    headerEl.innerHTML = `<h1>อุปกรณ์</h1><p>จัดการและติดตามอุปกรณ์</p>`;
+                    headerEl.innerHTML = `<h1>จัดการอุปกรณ์</h1><p>ทะเบียนและการเบิกจ่ายอุปกรณ์</p>`;
                     viewEl.innerHTML = this.renderEquipment();
                 } else if (this.currentView === 'settings') {
-                    headerEl.innerHTML = `<h1>ตั้งค่า</h1><p>จัดการตัวเลือกต่างๆ ของระบบ</p>`;
+                    headerEl.innerHTML = `<h1>ตั้งค่าระบบ</h1><p>จัดการตัวเลือกต่างๆ ของระบบ</p>`;
                     viewEl.innerHTML = this.renderSettings();
                 } else if (this.currentView === 'calendar') {
                     headerEl.innerHTML = `<h1>ปฏิทินงาน</h1><p>ตารางงานและการลาของพนักงาน</p>`;
@@ -1640,7 +1701,7 @@
                         </div>
                         
                         <div style="display: flex; gap: 1rem; width: 100%; justify-content: center; margin-top: 0.5rem;">
-                            <div class="stat-badge" style="background: rgba(236, 72, 153, 0.2); color: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.9em;">
+                            <div class="stat-badge" style="background: rgba(237, 28, 36, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9em;">
                                 <i class='bx bxs-calendar-x'></i> มีการลาเดือนนี้ ${totalLeaves} ครั้ง
                             </div>
                         </div>
@@ -1729,14 +1790,13 @@
                 `).join('');
 
                 // Color mapping: Types (Primary), Statuses (Secondary), Levels (Green), Shifts (Yellow)
-                // Note: CSS vars are hex, converting to RGB for rgba usage
-                // Primary: 99, 102, 241 (Indigo-500)
-                // Secondary: 236, 72, 153 (Pink-500)
+                // Red: 237, 28, 36
+                // Dark: 30, 41, 59
                 // Green: 52, 211, 153
                 // Yellow: 250, 204, 21
 
-                const typeTags = genTags(this.store.settings.types, 'types', '99, 102, 241');
-                const statusTags = genTags(this.store.settings.statuses, 'statuses', '236, 72, 153');
+                const typeTags = genTags(this.store.settings.types, 'types', '237, 28, 36');
+                const statusTags = genTags(this.store.settings.statuses, 'statuses', '30, 41, 59');
                 const levelTags = genTags(this.store.settings.levels, 'levels', '52, 211, 153');
                 const shiftTags = genTags(this.store.settings.shifts, 'shifts', '250, 204, 21');
 
@@ -2020,6 +2080,10 @@
                                     <i class='bx bxs-devices'></i> อุปกรณ์
                                 </button>
                             </div>
+                            <!-- Export Button -->
+                            <button class="btn btn-secondary" onclick="app.exportToCSV()">
+                                <i class='bx bxs-file-export'></i> Export Report
+                            </button>
                             <div style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 6px;">
                                 <span style="margin-right: 10px; color: var(--text-muted); font-size: 0.9em;">แสดงผล:</span>
                                 ${colToggles}
@@ -2102,8 +2166,8 @@
 
                         return `
                             <tr>
-                                ${!hidden.includes('name') ? `<td>${item.prefix || ''} ${item.name}</td>` : ''}
-                                ${!hidden.includes('level') ? `<td><span class="status-badge" style="background: rgba(99, 102, 241, 0.1); color: var(--primary)">${item.level}</span></td>` : ''}
+                                ${!hidden.includes('name') ? `<td><div style="font-weight:500">${item.prefix || ''} ${item.name}</div><div style="font-size:0.8em;color:var(--primary);font-weight:600">ID: ${item.employeeId || '-'}</div></td>` : ''}
+                                ${!hidden.includes('level') ? `<td><span class="status-badge" style="background: rgba(237, 28, 36, 0.1); color: var(--primary)">${item.level}</span></td>` : ''}
                                 ${!hidden.includes('shift') ? `<td>${item.shift || '-'} <span style="color: var(--text-muted); font-size: 0.8em">${item.shiftDetail || ''}</span></td>` : ''}
                                 ${!hidden.includes('phones') ? `<td>${phoneHtml || '-'}</td>` : ''}
                                 ${!hidden.includes('count') ? `<td>${item.count}</td>` : ''}
@@ -2114,7 +2178,7 @@
                         let statusColor = '#94a3b8';
                         if (item.status === 'ปกติ') statusColor = '#34d399';
                         else if (item.status === 'ชำรุด') statusColor = '#f472b6';
-                        else if (item.assignedTo) statusColor = '#818cf8';
+                        else if (item.assignedTo) statusColor = '#1E293B'; // Dark Slate for Assigned
 
                         return `
                             <tr>
@@ -2205,10 +2269,11 @@
                         <tr>
                             <td>
                                 <div style="font-weight: 500">${emp.prefix || ''} ${emp.name}</div>
+                                <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">ID: ${emp.employeeId || '-'}</div>
                                 <div style="font-size: 0.8rem; color: var(--text-muted)">อายุ ${emp.age || '-'} ปี</div>
                             </td>
                             <td>
-                                <span class="status-badge" style="background: rgba(99, 102, 241, 0.1); color: var(--primary)">${emp.level || '-'}</span>
+                                <span class="status-badge" style="background: rgba(237, 28, 36, 0.1); color: var(--primary)">${emp.level || '-'}</span>
                             </td>
                             <td>
                                 <div style="font-weight:500">${shiftDisplay}</div>
@@ -2221,7 +2286,7 @@
                                 <button onclick="app.openHistoryModal('${emp.id}')" class="btn-secondary" style="padding: 5px 10px; border-radius: 4px; margin-right: 5px; color: #f59e0b; border-color: rgba(245, 158, 11, 0.3)" title="ประวัติ">
                                     <i class='bx bx-history'></i>
                                 </button>
-                                <button onclick="app.openEditEmployeeModal('${emp.id}')" class="btn-secondary" style="padding: 5px 10px; border-radius: 4px; margin-right: 5px; color: var(--primary); border-color: rgba(99, 102, 241, 0.3)">
+                                <button onclick="app.openEditEmployeeModal('${emp.id}')" class="btn-secondary" style="padding: 5px 10px; border-radius: 4px; margin-right: 5px; color: var(--primary); border-color: rgba(237, 28, 36, 0.3)">
                                     <i class='bx bx-edit'></i>
                                 </button>
                                 <button onclick="app.softDeleteEmployee('${emp.id}')" class="btn-secondary" style="padding: 5px 10px; border-radius: 4px; color: #ef4444; border-color: rgba(239,68,68,0.3)">
@@ -2273,7 +2338,7 @@
                     if (eq.status === 'ชำรุด') statusColor = '#f472b6';
                     if (eq.status === 'ส่งซ่อม') statusColor = '#facc15';
                     if (eq.status === 'สูญหาย') statusColor = '#ef4444';
-                    if (eq.assignedTo) statusColor = '#818cf8';
+                    if (eq.assignedTo) statusColor = '#1E293B';
 
                     const statusBadge = `
                         <span class="status-badge" style="background: ${statusColor}20; color: ${statusColor}">
@@ -2436,6 +2501,7 @@
                 this.populateEmployeeOptions();
 
                 const form = document.querySelector('#employeeModal form');
+                form.employeeId.value = emp.employeeId || '';
                 form.prefix.value = emp.prefix;
                 form.name.value = emp.name;
                 form.age.value = emp.age;
@@ -2510,6 +2576,7 @@
                 const id = formData.get('id');
                 const emp = {
                     id: id || Date.now().toString(), // Use existing ID or create new
+                    employeeId: formData.get('employeeId'),
                     prefix: formData.get('prefix'),
                     name: formData.get('name'),
                     age: formData.get('age'),
